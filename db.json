@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "تعلم Angular Signals",
+      "description": "افهم الفرق بين signal و plain state",
+      "completed": false,
+      "priority": "high",
+      "createdAt": "2026-09-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "title": "اعمل Reactive Form",
+      "description": "فورم فيه validation",
+      "completed": true,
+      "priority": "medium",
+      "createdAt": "2026-08-30T10:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "title": "افهم HttpInterceptorFn",
+      "description": "قارنه بـ Express middleware",
+      "completed": false,
+      "priority": "low",
+      "createdAt": "2026-08-28T10:00:00.000Z"
+    }
+  ]
+}
