@@ -1,56 +1,83 @@
+  <!-- Header -->
+  <div class="page-header">
+    <div class="container">
+      <h2 class="mb-1">📋 المهام اليومية</h2>
+      <p class="mb-0 opacity-75">تابع مهامك وخليها منظمة</p>
+    </div>
+  </div>
 
-<section class="vh-100" style="background-color: #3da2c3;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col col-lg-8 col-xl-6">
-        <div class="card rounded-3">
-          <div class="card-body p-4">
+  <div class="container pb-5">
 
-            <p class="mb-2"><span class="h2 me-2">Todo List</span> <span
-                class="badge bg-danger">checklist</span></p>
-            <!-- <p class="text-muted pb-2">04/01/2020 • ML - 1321</p> -->
+    <!-- Filter Buttons -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all"(click)="allTasks()" >الكل</button>
+      <button class="filter-btn" data-filter="pending" (click)="notComplete()">غير مكتملة</button>
+      <button class="filter-btn" data-filter="completed" (click)="complete()">مكتملة</button>
+      <button class="filter-btn" data-filter="high" (click)="highPriority()">أولوية عالية</button>
+    </div>
 
-            <ul class="list-group rounded-0">
-            @for (task of apiTasks.tasks(); track $index) {
-                    <!-- <p>{{task.title}}</p> -->
-                    <li class="list-group-item border-0 d-flex align-items-center ps-0">
-                    <input class="form-check-input me-3" type="checkbox" value="" aria-label="..."  />
-                    <p>
-                        {{task.title}}
-                    </p>
-                </li>
-            }
-            @empty {
-                <p> You dont have any tasks</p>
-            }
-            </ul>
+    <!-- Tasks List -->
+    <div class="row" id="tasksContainer">
 
-            <div class="divider d-flex align-items-center my-4">
-              <p class="text-center mx-3 mb-0" style="color: #a2aab7;">Shared with</p>
+      <!-- Task Card 1 -->
+       @for (task of apiTasks.tasks(); track $index) {
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card task-card priority-high">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox">
+                <label class="task-title">{{task.title}}</label>
+              </div>
+              <div class="task-actions">
+                <button title="تعديل">✏️</button>
+                <button title="حذف">🗑️</button>
+              </div>
             </div>
-
-            <ul class="list-group rounded-0 list-group-horizontal justify-content-center pb-2">
-              <li class="list-group-item border-0 d-flex align-items-center p-0">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-8.webp" alt="avatar"
-                  class="rounded-circle me-n2" width="45">
-              </li>
-              <li class="list-group-item border-0 d-flex align-items-center p-0">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-3.webp" alt="avatar"
-                  class="rounded-circle me-n2" width="45">
-              </li>
-              <li class="list-group-item border-0 d-flex align-items-center p-0">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-5.webp" alt="avatar"
-                  class="rounded-circle me-n2" width="45">
-              </li>
-              <li class="list-group-item border-0 d-flex align-items-center p-0">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp" alt="avatar"
-                  class="rounded-circle me-n2" width="45">
-              </li>
-            </ul>
-
+            <p class="task-desc">{{task.description}}</p>
+            <div class="task-meta">
+              <span class="badge-priority badge-high">{{task.priority}}</span>
+              <span>{{task.createdAt}}</span>
+            </div>
           </div>
         </div>
       </div>
+    }
+      <!-- Task Card 2 (Completed)
+      <div class="col-12 col-md-6 col-lg-4">
+        <div class="card task-card completed priority-medium">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start mb-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" checked>
+                <label class="task-title completed-text">اعمل Reactive Form</label>
+              </div>
+              <div class="task-actions">
+                <button title="تعديل">✏️</button>
+                <button title="حذف">🗑️</button>
+              </div>
+            </div>
+            <p class="task-desc">فورم فيه validation باستخدام FormBuilder</p>
+            <div class="task-meta">
+              <span class="badge-priority badge-medium">أولوية متوسطة</span>
+              <span>منذ 4 أيام</span>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+
     </div>
+
+    <!-- Empty State (اخفيها لو فيه تاسكات، اظهرها لو الليست فاضية) -->
+    <div class="empty-state d-none" id="emptyState">
+      <i>📭</i>
+      <h5>مفيش تاسكات دلوقتي</h5>
+      <p>ابدأ ضيف تاسك جديدة عشان تنظم يومك</p>
+    </div>
+
   </div>
-</section>
+
+  <!-- Floating Add Button -->
+  <button class="fab-add" title="إضافة تاسك">+</button>
+

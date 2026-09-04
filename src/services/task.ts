@@ -7,13 +7,25 @@ import { environment } from '../environments/environment.development';
   providedIn: 'root',
 })
 export class Task {
+
   private httpClient = inject(HttpClient)
   tasks = signal<ITasks[]>([]);
-  loadTasks(){
-    this.httpClient.get<ITasks[]>(`${environment.baseUrl}/tasks`).subscribe({
+
+  loadTasks(completed?:boolean , priority?:string){
+
+    let url = `${environment.baseUrl}/tasks`
+
+    if(completed !== undefined)
+      url+=`?completed=${completed}`
+    
+    if (priority)
+       url +=`?priority=${priority}`
+
+
+    this.httpClient.get<ITasks[]>(url).subscribe({
       next:(res)  => (this.tasks.set(res)),
       error:(err) => console.log('error loading tasks',err)
     })
-  }
 
+  }
 }
