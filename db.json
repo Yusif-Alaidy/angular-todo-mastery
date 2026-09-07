@@ -1,7 +1,7 @@
 {
   "tasks": [
     {
-      "id": 1,
+      "id": "1",
       "title": "تعلم Angular Signals",
       "description": "افهم الفرق بين signal و plain state",
       "completed": false,
@@ -9,7 +9,7 @@
       "createdAt": "2026-09-01T10:00:00.000Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "اعمل Reactive Form",
       "description": "فورم فيه validation",
       "completed": true,
@@ -17,12 +17,37 @@
       "createdAt": "2026-08-30T10:00:00.000Z"
     },
     {
-      "id": 3,
+      "id": "3",
       "title": "افهم HttpInterceptorFn",
       "description": "قارنه بـ Express middleware",
       "completed": false,
       "priority": "low",
       "createdAt": "2026-08-28T10:00:00.000Z"
+    },
+    {
+      "title": "new task",
+      "description": "",
+      "priority": "medium",
+      "completed": false,
+      "createdAt": "2026-09-07T16:35:59.018Z",
+      "id": "F9loiPk2FLs"
+    },
+    {
+      "title": "sdfasf",
+      "description": "",
+      "priority": "medium",
+      "completed": false,
+      "createdAt": "2026-09-07T16:38:20.038Z",
+      "id": "vO1--XOfaGs"
+    },
+    {
+      "title": "fdasfsdf",
+      "description": "",
+      "priority": "medium",
+      "completed": false,
+      "createdAt": "2026-09-07T16:38:45.904Z",
+      "id": "TD-51NR8gvQ"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

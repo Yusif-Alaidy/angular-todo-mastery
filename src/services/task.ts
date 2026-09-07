@@ -28,4 +28,12 @@ export class Task {
     })
 
   }
+  addTask(task:Omit<ITasks,'id'>){
+    return this.httpClient.post<ITasks>(`${environment.baseUrl}/tasks`, task).subscribe({
+      next: (newTask) => {
+        this.tasks.update(current => [...current, newTask]);
+      },
+      error: (err) => console.error('Failed to add task', err)
+    });  
+  }
 }

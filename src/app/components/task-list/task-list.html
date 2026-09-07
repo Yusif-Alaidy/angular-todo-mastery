@@ -22,12 +22,17 @@
       <!-- Task Card 1 -->
        @for (task of apiTasks.tasks(); track $index) {
       <div class="col-12 col-md-6 col-lg-4">
-        <div class="card task-card priority-high">
+        <div class="card task-card priority-high" [ngClass]="{completed :task.completed}">
           <div class="card-body">
             <div class="d-flex justify-content-between align-items-start mb-2">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox">
-                <label class="task-title">{{task.title}}</label>
+                <input class="form-check-input checked" type="checkbox" [checked]="task.completed">
+                <label 
+                class="task-title"
+                [ngClass]="{'completed-text' : task.completed}"
+                >
+                {{task.title}}
+              </label>
               </div>
               <div class="task-actions">
                 <button title="تعديل">✏️</button>
@@ -43,29 +48,6 @@
         </div>
       </div>
     }
-      <!-- Task Card 2 (Completed)
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card task-card completed priority-medium">
-          <div class="card-body">
-            <div class="d-flex justify-content-between align-items-start mb-2">
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" checked>
-                <label class="task-title completed-text">اعمل Reactive Form</label>
-              </div>
-              <div class="task-actions">
-                <button title="تعديل">✏️</button>
-                <button title="حذف">🗑️</button>
-              </div>
-            </div>
-            <p class="task-desc">فورم فيه validation باستخدام FormBuilder</p>
-            <div class="task-meta">
-              <span class="badge-priority badge-medium">أولوية متوسطة</span>
-              <span>منذ 4 أيام</span>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
 
     </div>
 
@@ -79,5 +61,5 @@
   </div>
 
   <!-- Floating Add Button -->
-  <button class="fab-add" title="إضافة تاسك">+</button>
+  <button class="fab-add" title="إضافة تاسك" routerLink="/add-task">+</button>
 

@@ -1,11 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Task } from '../../../services/task';
-import { ITasks } from '../../../interfaces/i-tasks';
-import { ActivatedRoute, Router } from '@angular/router';
+// import { ITasks } from '../../../interfaces/i-tasks';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { NgClass } from '@angular/common';
+// import { NgClass } from "../../../../node_modules/@angular/common/types/_common_module-chunk";
 
 @Component({
   selector: 'app-task-list',
-  imports: [],
+  imports: [NgClass, RouterLink],
   templateUrl: './task-list.html',
   styleUrl: './task-list.css',
 })
