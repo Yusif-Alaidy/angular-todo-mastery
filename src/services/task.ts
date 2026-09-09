@@ -36,4 +36,20 @@ export class Task {
       error: (err) => console.error('Failed to add task', err)
     });  
   }
+  updateTask(task:ITasks){
+    return this.httpClient.patch<ITasks>(`${environment.baseUrl}/tasks/${task.id}`, task).subscribe({
+      next: (updatedTask) => {
+        this.tasks.update(current=>current.map(t => t.id === updatedTask.id ? updatedTask : t));
+      },
+      error: (err) => console.error('Failed to add task', err)
+    });  
+  }
+deleteTask(id: string) {
+  return this.httpClient.delete<ITasks>(`${environment.baseUrl}/tasks/${id}`).subscribe({
+    next: () => {
+      this.tasks.update(current => current.filter(t => t.id !== id));
+    },
+    error: (err) => console.error('Failed to delete task', err)
+  });
+}
 }

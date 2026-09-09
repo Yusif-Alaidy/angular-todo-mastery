@@ -1,0 +1,52 @@
+<div class="add-task-container">
+  <h2>Add New Task</h2>
+
+  <form [formGroup]="editTaskForm" (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input
+        id="title"
+        type="text"
+        formControlName="title"
+        placeholder="Enter task title"
+      />
+      @if (editTaskForm.get('title')?.invalid && editTaskForm.get('title')?.touched) {
+        <span class="error text-danger">
+          @if (editTaskForm.get('title')?.errors?.['required']) {
+            Title is required.
+          }
+          @if (editTaskForm.get('title')?.errors?.['minlength']) {
+            Title must be at least 3 characters.
+          }
+        </span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        placeholder="Enter task description (optional)"
+        rows="4"
+      ></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="priority">Priority</label>
+      <select id="priority" formControlName="priority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" [disabled]="editTaskForm.invalid">Add Task</button>
+      <!-- <button type="button" routerLink="home">Cancel</button> -->
+      <a class="btn btn-primary" routerLink="">Cancel</a>
+    </div>
+
+  </form>
+</div>

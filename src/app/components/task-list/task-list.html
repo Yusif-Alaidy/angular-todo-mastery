@@ -35,8 +35,8 @@
               </label>
               </div>
               <div class="task-actions">
-                <button title="تعديل">✏️</button>
-                <button title="حذف">🗑️</button>
+                <a class="btn btn-primary" routerLink="edit-task/{{task.id}}">✏️</a>
+                <button (click)="deleteTask(task.id)" title="حذف">🗑️</button>
               </div>
             </div>
             <p class="task-desc">{{task.description}}</p>

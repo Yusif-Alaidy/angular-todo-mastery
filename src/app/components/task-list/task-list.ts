@@ -52,5 +52,8 @@ export class TaskList implements OnInit {
     // this.apiTasks.loadTasks(undefined,"high")
     this.router.navigate([''], {queryParams:{priority:"high"}})
   }
+  deleteTask(id:string){
+    this.apiTasks.deleteTask(id);
+  }
 
 }
