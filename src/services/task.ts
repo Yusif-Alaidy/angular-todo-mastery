@@ -44,12 +44,15 @@ export class Task {
       error: (err) => console.error('Failed to add task', err)
     });  
   }
-deleteTask(id: string) {
-  return this.httpClient.delete<ITasks>(`${environment.baseUrl}/tasks/${id}`).subscribe({
-    next: () => {
-      this.tasks.update(current => current.filter(t => t.id !== id));
-    },
-    error: (err) => console.error('Failed to delete task', err)
-  });
-}
+  deleteTask(id: string) {
+    return this.httpClient.delete<ITasks>(`${environment.baseUrl}/tasks/${id}`).subscribe({
+      next: () => {
+        this.tasks.update(current => current.filter(t => t.id !== id));
+      },
+      error: (err) => console.error('Failed to delete task', err)
+    });
+  }
+  getById(id: string|null) {
+    return this.httpClient.get<ITasks>(`${environment.baseUrl}/tasks/${id}`);
+  }
 }

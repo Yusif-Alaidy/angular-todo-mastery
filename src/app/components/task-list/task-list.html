@@ -39,6 +39,7 @@
                 <button (click)="deleteTask(task.id)" title="حذف">🗑️</button>
               </div>
             </div>
+            <a class="btn btn-primary" routerLink="task/{{task.id}}">details</a>
             <p class="task-desc">{{task.description}}</p>
             <div class="task-meta">
               <span class="badge-priority badge-high">{{task.priority}}</span>
