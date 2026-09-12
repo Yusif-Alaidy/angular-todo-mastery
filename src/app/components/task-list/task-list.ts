@@ -3,11 +3,13 @@ import { Task } from '../../../services/task';
 // import { ITasks } from '../../../interfaces/i-tasks';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { NgClass } from '@angular/common';
+import { TimeAgoPipe } from "../../pipes/time-ago-pipe";
+import { PriorityLabelPipe } from "../../pipes/priority-label-pipe";
 // import { NgClass } from "../../../../node_modules/@angular/common/types/_common_module-chunk";
 
 @Component({
   selector: 'app-task-list',
-  imports: [NgClass, RouterLink],
+  imports: [NgClass, RouterLink, TimeAgoPipe, PriorityLabelPipe],
   templateUrl: './task-list.html',
   styleUrl: './task-list.css',
 })

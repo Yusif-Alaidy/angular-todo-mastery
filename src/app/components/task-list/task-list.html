@@ -42,8 +42,8 @@
             <a class="btn btn-primary" routerLink="task/{{task.id}}">details</a>
             <p class="task-desc">{{task.description}}</p>
             <div class="task-meta">
-              <span class="badge-priority badge-high">{{task.priority}}</span>
-              <span>{{task.createdAt}}</span>
+              <span class="badge-priority badge-high">{{task.priority|priorityLabel}}</span>
+              <span>{{task.createdAt|timeAgo}}</span>
             </div>
           </div>
         </div>
